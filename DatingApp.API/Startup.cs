@@ -43,7 +43,7 @@ namespace DatingApp.API
                 });
             //Cors - för att ge tilstånd för andra att använda API
             services.AddCors();
-
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();
 
             //Add service to seed users
@@ -96,6 +96,7 @@ namespace DatingApp.API
 
             // Ta bort kommentar för metoden under, om databasen behöver seedas om!
             //seeder.SeedUsers();
+            
             //Cors - för att ge tilstånd för andra att använda API
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
